@@ -1,15 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "MinusAi",
+  "name": "Google -AI Appender",
   "version": "1.0",
-  "description": "Appends -ai flag to google search",
-  "permissions": [
-    "webRequest",
-    "scripting",
-    "webRequestBlocking"
-],
+  "description": "Automatically adds -ai to Google searches.",
+  "permissions": ["scripting"],
   "host_permissions": ["https://www.google.com/*"],
-  "background": {
-    "service_worker": "background.js"
-  }
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/search*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
 }
